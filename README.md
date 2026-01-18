@@ -57,6 +57,51 @@ See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed setup instructions.
 7. Test manual run: `uv run python create_instance.py`
 8. Set up scheduled execution
 
+## Usage
+
+### Main Script - create_instance.py
+
+```bash
+# Default: Try all availability domains
+uv run python create_instance.py
+
+# Verbose output
+uv run python create_instance.py -v
+
+# Validate config without creating
+uv run python create_instance.py --dry-run
+
+# Use single AD only
+uv run python create_instance.py --no-cycle
+
+# Force creation (ignore flag file)
+uv run python create_instance.py --force
+```
+
+### Helper Script - helper_scripts.py
+
+```bash
+# Validate configuration
+uv run python helper_scripts.py --validate
+
+# Test authentication
+uv run python helper_scripts.py --test-auth
+
+# List availability domains
+uv run python helper_scripts.py --list-ads
+
+# List available images
+uv run python helper_scripts.py --list-images
+
+# Find images for specific shape/OS
+uv run python helper_scripts.py --list-images --shape VM.Standard.A1.Flex --os "Canonical Ubuntu"
+
+# List compute shapes
+uv run python helper_scripts.py --list-shapes
+```
+
+For detailed usage documentation, see [USAGE.md](USAGE.md).
+
 ## Free Tier Shapes
 
 - **VM.Standard.A1.Flex** (ARM): Up to 4 OCPUs, 24GB RAM (recommended)
