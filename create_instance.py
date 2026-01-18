@@ -421,16 +421,25 @@ def main():
         return 0
     
     # Get availability domains to try
-    if args.no_cycle or config['availability_domain']:
-        # Use only the specified AD
+    if args.no_cycle:
+        # Use only the specified AD (or first one if not specified)
         if config['availability_domain']:
             availability_domains = [config['availability_domain']]
-            logger.info(f"Using specified availability domain: {config['availability_domain']}")
+            logger.info(f"Using only specified availability domain: {config['availability_domain']}")
         else:
-            logger.error("No availability domain specified in .env")
-            return 1
+            # Get all ADs but only use the first one
+            all_ads = get_all_availability_domains(
+                identity_client,
+                config['compartment'],
+                logger
+            )
+            if not all_ads:
+                logger.error("Could not retrieve availability domains")
+                return 1
+            availability_domains = [all_ads[0]]
+            logger.info(f"Using first availability domain: {all_ads[0]}")
     else:
-        # Get all ADs
+        # Get all ADs and cycle through them
         availability_domains = get_all_availability_domains(
             identity_client,
             config['compartment'],
@@ -440,6 +449,8 @@ def main():
         if not availability_domains:
             logger.error("Could not retrieve availability domains")
             return 1
+        
+        logger.info(f"Will cycle through all {len(availability_domains)} availability domains")
     
     # Try to create instance across ADs and FDs
     logger.info("")
