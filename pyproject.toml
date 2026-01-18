@@ -1,0 +1,46 @@
+[project]
+name = "oci-instance-hunter"
+version = "0.1.0"
+description = "Automatically create OCI Always Free instances by retrying when capacity is unavailable"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Prashanth Tilleti", email = "ptilleti@users.noreply.github.com"}
+]
+keywords = ["oci", "oracle-cloud", "automation", "always-free"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "oci>=2.119.0",
+    "python-dotenv>=1.0.0",
+    "colorama>=0.4.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/ptilleti/oci-instance-hunter"
+Repository = "https://github.com/ptilleti/oci-instance-hunter"
+
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"

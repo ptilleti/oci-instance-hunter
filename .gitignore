@@ -1,0 +1,41 @@
+# OCI Configuration
+.env
+config/oci_config
+*.pem
+*.key
+*.pub
+
+# SSH keys (entire config directory to be safe)
+config/*
+
+# Instance tracking
+.instance_created
+*.flag
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv/
+
+# uv
+uv.lock
+
+# Logs
+logs/*.log
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
