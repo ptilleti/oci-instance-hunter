@@ -24,9 +24,6 @@ Command: `uv run python C:\path\to\oci-instance-hunter\create_instance.py`
 ### Linux Cron
 Add to crontab: `*/10 * * * * cd /path/to/project && uv run python create_instance.py`
 
-### Python schedule library
-Run the script once and it will schedule itself internally.
-
 ## Project Structure
 
 ```
